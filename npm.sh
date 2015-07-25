@@ -4,8 +4,8 @@
 
 
 # modules
-msu_require console
-msu_require fs
+msu_require "console"
+msu_require "fs"
 
 
 # mod vars
@@ -19,31 +19,21 @@ NODE_TRACK=~/.node_modules
 # ${1} - name of the module
 function ln_mod() {
   [ ${PWD} == ${HOME} ] && return # dont link if in $HOME
-  mkdir -p node_modules # ensure node_modules/ exists
+  mkdir -p node_modules/ # ensure node_modules/ exists
+  mkdir -p node_modules/.bin/ # and bin
   for pkg in "$@"
   do
     [ -d ${NODE_HOME}/${pkg} ] && {
       rm -rf $PWD/node_modules/${pkg}
       ln -sf ${NODE_HOME}/${pkg} $PWD/node_modules/${pkg}
-      tick "${pkg}: linked"
+      tick "${pkg}: linked module"
+      [ -x ${NODE_BIN}/${pkg} ] && {
+        rm -rf node_modules/.bin/$pkg
+        ln -fs ${NODE_BIN}/$pkg node_modules/.bin/$pkg
+        tick "${pkg}: linked executable"
+      }
     } || {
-      cross "${pkg}: missing"
-    }
-  done
-}
-
-
-# linking an node module executable in a node_modules/ in cwd
-function ln_bin() {
-  mkdir -p node_modules/.bin/
-  for pkg in "$@"
-  do
-    [ -x ${NODE_BIN}/${pkg} ] && {
-      rm -rf node_modules/.bin/$pkg
-      ln -fs ${NODE_BIN}/$pkg node_modules/.bin/$pkg
-      tick "${pkg}: linked"
-    } || {
-      cross "${pkg}: missing"
+      cross "${pkg}: missing module"
     }
   done
 }
@@ -51,7 +41,7 @@ function ln_bin() {
 
 # installing a node module in my top-most node_modules directory
 function g() {
-  pushd ~
+  pushd ~ > /dev/null
   for pkg in "$@"
   do
     npm install ${pkg}
@@ -65,14 +55,14 @@ function g() {
       cross "${pkg}: could not be installed"
     }
   done
-  popd
+  popd > /dev/null
 }
 
 
 # install node module globally* and link too
 function gln() {
   g "$@"
-  ln "$@"
+  ln_mod "$@"
 }
 
 
@@ -97,19 +87,19 @@ function gtrack() {
 # restore globally installed node modules from ~/.node_modules
 function grestore() {
   pkgs="$(cat ~/.node_modules | tr '\n' ' ')"
-  pushd ~
+  pushd ~ > /dev/null
   for pkg in ${pkgs}
   do
     [ -d "${NODE_HOME}/${pkg}" ] || npm install ${pkg}
   done
-  popd
+  popd > /dev/null
   success "restored successfully"
 }
 
 
 # removing a globally installed node module
 function gremove() {
-  pushd ~
+  pushd ~ > /dev/null
   for pkg in "$@"
   do
     rm -r node_modules/${pkg}
@@ -118,15 +108,15 @@ function gremove() {
     tick "removed ${pkg}"
   done
   rm .node_modules_tmp
-  popd
+  popd > /dev/null
 }
 
 
 # updates my top-most (global) node_modules
 function gupdate() {
-  pushd ~
+  pushd ~ > /dev/null
   ls node_modules | xargs -I{} npm install {}
-  popd
+  popd > /dev/null
 }
 
 
