@@ -16,7 +16,6 @@ NODE_TRACK=~/.node_modules
 
 
 # creates symbolic links for node_modules
-# ${1} - name of the module
 function ln_mod() {
   [ ${PWD} == ${HOME} ] && return # dont link if in $HOME
   mkdir -p node_modules/ # ensure node_modules/ exists
@@ -115,7 +114,12 @@ function gremove() {
 # updates my top-most (global) node_modules
 function gupdate() {
   pushd ~ > /dev/null
-  ls node_modules | xargs -I{} npm install {}
+  pkgs="$@"
+  [[ -z ${pkgs} ]] && pkgs="$(ls node_modules | tr '\n' ' ')"
+  for pkg in ${pkgs}
+  do
+    npm install ${pkg}
+  done
   popd > /dev/null
 }
 

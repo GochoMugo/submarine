@@ -14,6 +14,12 @@ Ensure you have installed [msu](https://github.com/GochoMugo/msu):
 ⇒ msu install gh:GochoMugo/submarine
 ```
 
+
+## modules:
+
+* [npm](https://github.com/GochoMugo/submarine/tree/master/docs/npm.md)
+
+
 ## license:
 
 __The MIT License (MIT)__
