@@ -26,13 +26,13 @@ function ln_mod() {
       rm -rf $PWD/node_modules/${pkg}
       ln -sf ${NODE_HOME}/${pkg} $PWD/node_modules/${pkg}
       tick "${pkg}: linked module"
-      [ -x ${NODE_BIN}/${pkg} ] && {
-        rm -rf node_modules/.bin/$pkg
-        ln -fs ${NODE_BIN}/$pkg node_modules/.bin/$pkg
-        tick "${pkg}: linked executable"
-      }
     } || {
       cross "${pkg}: missing module"
+    }
+    [ -x ${NODE_BIN}/${pkg} ] && {
+      rm -rf node_modules/.bin/$pkg
+      ln -fs ${NODE_BIN}/$pkg node_modules/.bin/$pkg
+      tick "${pkg}: linked executable"
     }
   done
 }
