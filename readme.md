@@ -17,7 +17,10 @@ Ensure you have installed [msu](https://github.com/GochoMugo/msu):
 
 ## modules:
 
+All [`docs`](https://github.com/GochoMugo/submarine/tree/master/docs/):
+
 * [npm](https://github.com/GochoMugo/submarine/tree/master/docs/npm.md)
+* [utils](https://github.com/GochoMugo/submarine/tree/master/docs/utils.md)
 
 
 ## license:
