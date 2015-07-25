@@ -4,7 +4,7 @@
 
 ## design:
 
-> Blog post coming soon!
+Read this [blog post](https://gochomugo.github.io/musings/global-node-modules/) on the assumed work-flow!
 
 
 ## usage:
