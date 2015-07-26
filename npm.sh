@@ -67,7 +67,7 @@ function gln() {
 
 # track globally installed node modules
 function gtrack() {
-  pkgs="$@"
+  local pkgs="$@"
   [[ -z ${pkgs} ]] && pkgs="$(ls ${NODE_HOME} | tr '\n' ' ')"
   touch ${NODE_TRACK}
   for pkg in ${pkgs}
@@ -85,7 +85,7 @@ function gtrack() {
 
 # restore globally installed node modules from ~/.node_modules
 function grestore() {
-  pkgs="$(cat ~/.node_modules | tr '\n' ' ')"
+  local pkgs="$(cat ~/.node_modules | tr '\n' ' ')"
   pushd ~ > /dev/null
   for pkg in ${pkgs}
   do
@@ -114,7 +114,7 @@ function gremove() {
 # updates my top-most (global) node_modules
 function gupdate() {
   pushd ~ > /dev/null
-  pkgs="$@"
+  local pkgs="$@"
   [[ -z ${pkgs} ]] && pkgs="$(ls node_modules | tr '\n' ' ')"
   for pkg in ${pkgs}
   do
@@ -141,4 +141,21 @@ function ginstalled() {
 function ln_grunt() {
   local mods=$(cat package.json | grep -Eo "\"grunt.*\":\s*\"" | grep -Eo "[a-Z\-]+" | tr '\n' ' ')
   ln_mod ${mods}
+}
+
+
+# list versions of globally-installed modules
+function gversion() {
+  local pkgs="${@}"
+  [[ -z ${pkgs} ]] && pkgs="$(ls ${NODE_HOME} | tr '\n' ' ')"
+  for pkg in ${pkgs}
+  do
+    if [ -d "${NODE_HOME}/${pkg}" ]
+    then
+      local version=$(cat ${NODE_HOME}/${pkg}/package.json | grep -E "\"version\":" | grep -Eo "[0-9\.]+")
+      tick "${pkg} - ${version}"
+    else
+      cross "${pkg} (not installed)"
+    fi
+  done
 }

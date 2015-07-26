@@ -64,3 +64,8 @@ Checks if the node modules are globally-installed.
 ### `ln_grunt()`
 
 Links all the **grunt** tasks' modules, registered in the `package.json` in the current working directory.
+
+
+### `gversion([module_name [, module_name [, ...]]])`
+
+Lists the version of the globally-installed node modules.
