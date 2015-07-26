@@ -9,7 +9,7 @@ msu_require "fs"
 
 
 # mod vars
-DEPS="npm"
+DEPS="node npm"
 NODE_HOME=~/node_modules
 NODE_BIN=${NODE_HOME}/.bin
 NODE_TRACK=~/.node_modules
@@ -134,4 +134,11 @@ function ginstalled() {
       cross ${pkg}
      }
   done
+}
+
+
+# linking for grunt tasks
+function ln_grunt() {
+  local mods=$(cat package.json | grep -Eo "\"grunt.*\":\s*\"" | grep -Eo "[a-Z\-]+" | tr '\n' ' ')
+  ln_mod ${mods}
 }

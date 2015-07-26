@@ -59,3 +59,8 @@ Updates the globally-installed node-modules. If no module name is passed, **all*
 ### `ginstalled(module_name [, module_name [, ...]])`
 
 Checks if the node modules are globally-installed.
+
+
+### `ln_grunt()`
+
+Links all the **grunt** tasks' modules, registered in the `package.json` in the current working directory.
