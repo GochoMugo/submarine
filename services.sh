@@ -10,7 +10,16 @@ msu_require "console"
 # module variables
 DEPS="mongod redis-server"
 SERVICES_ROOT=${HOME}/services
-SERVICES_CONF=${SERVICES_ROOT}/conf
+
+
+# list which services are running
+function running() {
+  local services=$(ls ${SERVICES_ROOT}/pid | grep -Eo "^[a-Z]+")
+  for service in ${services}
+  do
+    list ${service}
+  done
+}
 
 
 # init
