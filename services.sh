@@ -14,10 +14,28 @@ SERVICES_ROOT=${HOME}/services
 
 # list which services are running
 function running() {
-  local services=$(ls ${SERVICES_ROOT}/pid | grep -Eo "^[a-Z]+")
-  for service in ${services}
+  local my_services="redis mongo"
+  for service in ${my_services}
   do
-    list ${service}
+    # started by submarine
+    local pid_file=${SERVICES_ROOT}/pid/${service}.pid
+    local pid=
+    if [ -f ${pid_file} ]
+    then
+      pid=$(cat ${pid_file})
+      if [ "$(ps aux | grep ${pid} | grep ${service})" ]
+      then
+        tick "${service} [${pid}]"
+      else
+        rm ${pid_file}
+      fi
+    fi
+    # started by someone else
+    local others=$(ps aux | grep ${service} | grep -Ev "${pid:-grep}|grep" | grep -Eo "^[^\ ]+\s+[0-9]+\s+" | grep -Eo "[0-9]+" | tr '\n' ' ')
+    for other in ${others}
+    do
+      tick "${service} [${other}] (not started by submarine)"
+    done
   done
 }
 
