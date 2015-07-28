@@ -30,6 +30,8 @@ function running() {
         rm ${pid_file}
         cross "${service} (not yet started by submarine)"
       fi
+    else
+      cross "${service} (not yet started by submarine)"
     fi
     # started by someone else
     local others=$(ps aux | grep ${service} | grep -Ev "${pid:-grep}|grep" | grep -Eo "^[^\ ]+\s+[0-9]+\s+" | grep -Eo "[0-9]+" | tr '\n' ' ')
