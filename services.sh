@@ -28,13 +28,14 @@ function running() {
         tick "${service} [${pid}]"
       else
         rm ${pid_file}
+        cross "${service} (not yet started by submarine)"
       fi
     fi
     # started by someone else
     local others=$(ps aux | grep ${service} | grep -Ev "${pid:-grep}|grep" | grep -Eo "^[^\ ]+\s+[0-9]+\s+" | grep -Eo "[0-9]+" | tr '\n' ' ')
     for other in ${others}
     do
-      tick "${service} [${other}] (not started by submarine)"
+      tick "${service} [${other}] (started by another program)"
     done
   done
 }
