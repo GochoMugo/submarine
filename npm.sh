@@ -47,6 +47,7 @@ function g() {
   done
   for pkg in "$@"
   do
+    pkg=$(echo ${pkg} | grep -Eo "^[^@]*")
     [ -d ${NODE_HOME}/${pkg} ] && {
       tick "${pkg}: installed"
       gtrack ${pkg}
