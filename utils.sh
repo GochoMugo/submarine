@@ -19,6 +19,7 @@ function check() {
   utils["go-search"]="https://github.com/tj/go-search"
   utils["hg"]="https://mercurial.selenic.com/"
   utils["hub"]="https://github.com/github/hub.git"
+  utils["hugo"]="http://gohugo.io"
   utils["jekyll"]="http://jekyllrb.com"
   utils["keybase"]="https://github.com/keybase/node-client"
   utils["mongod"]="https://www.mongodb.org/downloads"
