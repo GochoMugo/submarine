@@ -1,8 +1,13 @@
 
 # github
 
-Utilities useful for Github users
+Utilities useful for Github users.
 
+How?
+
+* clone github repos using shorthands
+* generate github tokens
+* etc...
 
 ## usage:
 

@@ -1,6 +1,14 @@
 
 # services
 
+Makes handling services easier during local development.
+
+How?
+
+* services store their data files at `${HOME}/services` thus allowing you to monitor the disk space used. If you want to reclaim back your space, you simply `rm -rf ${HOME}/services`
+* only one process of the service is run; this helps avoid slowing down your computer with many redundant processes
+
+
 ## usage
 
 1. **command:**

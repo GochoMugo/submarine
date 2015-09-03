@@ -2,6 +2,10 @@
 # submarine
 
 > **I want a Submarine, mum**
+>
+> Availing better **shell commands** for a faster workflow!
+>
+> And it is a [msu](https://github.com/GochoMugo/msu) module!!!
 
 [![Terminal Lover](https://img.shields.io/badge/terminal-lover-red.svg?style=flat-square)](https://github.com/GochoMugo)
 
@@ -17,7 +21,7 @@ Ensure you have installed [msu](https://github.com/GochoMugo/msu):
 
 ## modules:
 
-All [`docs`](https://github.com/GochoMugo/submarine/tree/master/docs/):
+Read the [`docs`](https://github.com/GochoMugo/submarine/tree/master/docs/) on available commands:
 
 * [badges](https://github.com/GochoMugo/submarine/tree/master/docs/badges.md)
 * [github](https://github.com/GochoMugo/submarine/tree/master/docs/github.md)

@@ -1,7 +1,11 @@
 
 # badges
 
-Template badges quickly. Based on https://shields.io.
+Template badges quickly, using https://shields.io.
+
+How?
+
+* generate markdown links to your travis builds, npm packages, coveralls, etc.
 
 
 ## usage:
@@ -11,7 +15,7 @@ Template badges quickly. Based on https://shields.io.
   ```bash
   $ msu run submarine.badges.<command>
   ```
- 
+
 2. **module require:**
 
   ```bash
@@ -24,4 +28,3 @@ Template badges quickly. Based on https://shields.io.
 ### markdown(username, reponame [, flag1 [, flag2])
 
 Echos markdown links for badges. To disable a badge use the flag format `--no-<badge-name>` where `<badge-name>` is a name of the badge e.g. **travis**.
-

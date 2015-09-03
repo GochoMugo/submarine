@@ -1,7 +1,11 @@
 
 # network
 
-Perform network operations, easily
+Perform network operations, easily.
+
+How?
+
+* common tasks such as checking if you are connected to internet, or a site is up
 
 
 ## usage:

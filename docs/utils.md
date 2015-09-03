@@ -1,12 +1,14 @@
 
 # utils
 
+Some utilities I find useful.
+
 ## usage
 
 1. **command:**
 
   ```bash
-  $ msu run submarine.utils.check
+  $ msu run submarine.utils.<command>
   ```
 
 2. **module require:**
@@ -18,4 +20,4 @@
 
 ### check()
 
-Checks to see if useful utils have been installed.
+Checks to see if useful development utilities have been installed.

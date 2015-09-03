@@ -1,7 +1,13 @@
 
 # process
 
-Handling processes better
+Handling processes better.
+
+How?
+
+* `ps -ef | grep processname` kinda sucks
+* some processes keep dying on you? automate retrying
+* etc...
 
 
 ## usage:
