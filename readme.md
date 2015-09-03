@@ -21,7 +21,9 @@ All [`docs`](https://github.com/GochoMugo/submarine/tree/master/docs/):
 
 * [badges](https://github.com/GochoMugo/submarine/tree/master/docs/badges.md)
 * [github](https://github.com/GochoMugo/submarine/tree/master/docs/github.md)
+* [network](https://github.com/GochoMugo/submarine/tree/master/docs/network.md)
 * [npm](https://github.com/GochoMugo/submarine/tree/master/docs/npm.md)
+* [process](https://github.com/GochoMugo/submarine/tree/master/docs/process.md)
 * [services](https://github.com/GochoMugo/submarine/tree/master/docs/services.md)
 * [utils](https://github.com/GochoMugo/submarine/tree/master/docs/utils.md)
 

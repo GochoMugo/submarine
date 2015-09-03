@@ -22,7 +22,9 @@ Utilities useful for Github users
 
 ### new_token()
 
-Generate a new github accesstoken. You will be prompted for credentials
+Generate a new github accesstoken. You will be prompted for credentials.
+
+Alias: `gh.new_token`
 
 
 ### clone(repoSlug)
@@ -31,3 +33,4 @@ Clone a github repository. Repo slug can be:
   * `username/reponame`: resolves to https://github.com/username/reponame.git
   * `reponame`: resolve to https://github.com/<username>/reponame where <username> is the configured name in git.
 
+Alias: `gh.clone`
