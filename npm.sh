@@ -16,6 +16,8 @@ NODE_TRACK=~/.node_modules
 
 
 # creates symbolic links for node_modules
+#
+# ${@} - module names
 function ln_mod() {
   [ ${PWD} == ${HOME} ] && return # dont link if in $HOME
   mkdir -p node_modules/ # ensure node_modules/ exists
@@ -39,6 +41,8 @@ function ln_mod() {
 
 
 # installing a node module in my top-most node_modules directory
+#
+# ${@} - module names
 function g() {
   pushd ~ > /dev/null
   for pkg in "$@"
@@ -60,6 +64,8 @@ function g() {
 
 
 # install node module globally* and link too
+#
+# ${@} - module names
 function gln() {
   g "$@"
   ln_mod "$@"
@@ -67,6 +73,8 @@ function gln() {
 
 
 # track globally installed node modules
+#
+# ${@} - module names
 function gtrack() {
   local pkgs="$@"
   [[ -z ${pkgs} ]] && pkgs="$(ls ${NODE_HOME} | tr '\n' ' ')"
@@ -98,6 +106,8 @@ function grestore() {
 
 
 # removing a globally installed node module
+#
+# ${@} - module names
 function gremove() {
   pushd ~ > /dev/null
   for pkg in "$@"
@@ -126,6 +136,8 @@ function gupdate() {
 
 
 # check if node module is installed globally
+#
+# ${@} - module names
 function ginstalled() {
   for pkg in "$@"
   do
@@ -146,6 +158,8 @@ function ln_grunt() {
 
 
 # list versions of globally-installed modules
+#
+# ${@} - module names
 function gversion() {
   local pkgs="${@}"
   [[ -z ${pkgs} ]] && pkgs="$(ls ${NODE_HOME} | tr '\n' ' ')"

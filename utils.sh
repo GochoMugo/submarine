@@ -9,7 +9,9 @@ msu_require "console"
 
 function check() {
   declare -A utils
+  utils["atom"]="https://atom.io/"
   utils["deluged"]="http://dev.deluge-torrent.org/wiki/Download"
+  utils["docker"]="http://docs.docker.com/linux/step_one/"
   utils["dropbox"]="https://www.dropbox.com/install"
   utils["gedit"]="https://wiki.gnome.org/Apps/Gedit"
   utils["gemnasium"]="https://github.com/gemnasium/toolbelt"
@@ -17,14 +19,17 @@ function check() {
   utils["git"]="https://git-scm.com/"
   utils["go"]="http://golang.org/doc/install"
   utils["go-search"]="https://github.com/tj/go-search"
+  utils["gvm"]="https://github.com/moovweb/gvm"
   utils["hg"]="https://mercurial.selenic.com/"
+  utils["http"]="https://github.com/jkbrzt/httpie"
   utils["hub"]="https://github.com/github/hub.git"
   utils["hugo"]="http://gohugo.io"
   utils["jekyll"]="http://jekyllrb.com"
   utils["keybase"]="https://github.com/keybase/node-client"
   utils["mongod"]="https://www.mongodb.org/downloads"
   utils["mackup"]="https://github.com/lra/mackup"
-  utils["node"]="https://nodejs.org/download/"
+  utils["mysql"]="http://www.mysql.com/"
+  utils["node"]="https://nodejs.org/download/" # implies `npm`
   utils["nvm"]="https://github.com/creationix/nvm"
   utils["nw"]="http://nwjs.io/"
   utils["physlock"]="https://github.com/muennich/physlock"

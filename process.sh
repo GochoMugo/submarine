@@ -13,8 +13,9 @@ DEPS=
 
 
 # is this process running
+#
 # ${@} processes
-running() {
+function running() {
   local process
   declare -i num
   for process in "$@"
@@ -37,7 +38,10 @@ running() {
 
 
 # forcibly restart a process
-restart() {
+#
+# ${1} - program to stop
+# ${@} - args to program on restart
+function restart() {
   pkill -KILL ${1}
   sleep 1
   ${@}
@@ -45,8 +49,10 @@ restart() {
 
 
 # retry command until it exits successfully (for 100 attempts)
+#
+# [$1] - OPTIONAL. number of times to run commands
 # ${@} - command(s) to run
-retry() {
+function retry() {
   local cmds
   local -i counter
   local -i max_attempts

@@ -13,6 +13,7 @@ DEFAULT_USERNAME=$(git config --global user.name)
 
 
 # generate new github tokens
+# will be prompted for necessary information
 function new_token() {
   ask "username [${DEFAULT_USERNAME}]:" USERNAME
   [ "${USERNAME}" == "" ] && USERNAME=${DEFAULT_USERNAME}

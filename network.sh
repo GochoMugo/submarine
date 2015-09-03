@@ -9,6 +9,11 @@ msu_require "console"
 
 # pinging to see if we are connected to the internet
 # and that a website is up
+#
+# ${@} - OPTIONAL. urls to hit
+#
+# If no arguments are passed, it defaults to ${SUBMARINE_PING_URL}
+# If ${SUBMARINE_PING_URL} is not set, it defaults to "duckduckgo.com"
 function online() {
   local hosts
   local host

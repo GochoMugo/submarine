@@ -3,6 +3,10 @@
 #
 
 
+# github
+alias gh.clone="msu run submarine.github.clone"
+alias gh.newtoken="msu run submarine.github.new_token"
+
 # network
 alias net.online="msu run submarine.network.online"
 

@@ -8,6 +8,10 @@ DEPS=
 
 
 # badges for README
+#
+# ${1} - username
+# ${2} - package name
+# ${@:3} - options e.g. --no-npm --no-node --no-travis --no-gemnasium --no-coveralls
 function markdown() {
   local username=${1}
   local package=${2}
