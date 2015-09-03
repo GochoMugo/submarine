@@ -33,3 +33,11 @@ running() {
     }
   done
 }
+
+
+# forcibly restart a process
+restart() {
+  pkill -KILL ${1}
+  sleep 1
+  ${@}
+}

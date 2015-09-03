@@ -16,4 +16,5 @@ alias npm.ln="msu run submarine.npm.ln_mod"
 alias npm.ln_grunt="msu run submarine.npm.ln_grunt"
 
 # processes
-alias running="msu run submarine.process.running"
+alias p.running="msu run submarine.process.running"
+alias p.restart="msu run submarine.process.restart"
