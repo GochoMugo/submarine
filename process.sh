@@ -17,10 +17,18 @@ DEPS=
 # ${@} processes
 function running() {
   local process
-  declare -i num
+  local -i num
   for process in "$@"
   do
-    num=$(ps -ef | grep -E "\ ${process}\$|\/${process}\/|\/${process}\$" | grep -Ev "msu|submarine|grep" | wc -l)
+    num=$(ps -ef | grep -E "\:[0-9]+\ ([^\ ]*\/)?${process}(\ .*)?\$" | wc -l)
+    # filter out commands to avoid inaccurate stats
+    # `msu` for running this command
+    # `ps` for the original process listing
+    # `grep` for regexp matching
+    if [ "${process}" == "msu" ] || [ "${process}" == "ps" ] || [ "${process}" == "grep" ]
+    then
+        num=num-1
+    fi
     [ ${num} -gt 0 ] && {
       local pluralize_is="is"
       local pluralize_process="process"
