@@ -21,3 +21,4 @@ alias npm.ln_grunt="msu run submarine.npm.ln_grunt"
 # processes
 alias p.running="msu run submarine.process.running"
 alias p.restart="msu run submarine.process.restart"
+alias p.retry="msu run submarine.process.retry"

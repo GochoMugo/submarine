@@ -4,6 +4,7 @@
 
 
 # modules
+msu_require "console"
 msu_require "format"
 
 
@@ -40,4 +41,46 @@ restart() {
   pkill -KILL ${1}
   sleep 1
   ${@}
+}
+
+
+# retry command until it exits successfully (for 100 attempts)
+# ${@} - command(s) to run
+retry() {
+  local cmds
+  local -i counter
+  local -i max_attempts
+  local exit_code
+  cmds="$@"
+  counter=1
+  max_attempts=10
+  exit_code=1
+
+  # reference: http://stackoverflow.com/questions/806906/how-do-i-test-if-a-variable-is-a-number-in-bash
+  re='^[0-9]+$'
+  if [[ "${1}" =~ ${re} ]]
+  then
+    max_attempts=${1}
+    cmds="${@:2}"
+  fi
+
+  until [ ${exit_code} -eq 0 ] || [ ${counter} -gt ${max_attempts} ]
+  do
+    log " *** Attempt #${counter} ***"
+    echo
+    ${cmds}
+    exit_code=$?
+    counter+=1
+    echo
+  done
+
+  echo
+  counter=counter-1 # (!) terrible hack to make attempts count accurate
+  [ ${exit_code} -eq 0 ] && {
+    success "Completed successfully in ${counter} attempts"
+  } || {
+    error "Exited with non-zero status code (${exit_code}) after ${counter} attempts"
+  }
+
+  return ${exit_code}
 }
