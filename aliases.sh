@@ -14,3 +14,6 @@ alias npm.gupdate="msu run submarine.npm.gupdate"
 alias npm.gversion="msu run submarine.npm.gversion"
 alias npm.ln="msu run submarine.npm.ln_mod"
 alias npm.ln_grunt="msu run submarine.npm.ln_grunt"
+
+# processes
+alias running="msu run submarine.process.running"
