@@ -3,6 +3,9 @@
 #
 
 
+# network
+alias net.online="msu run submarine.network.online"
+
 # npm
 alias npm.g="msu run submarine.npm.g"
 alias npm.ginstalled="msu run submarine.npm.ginstalled"
