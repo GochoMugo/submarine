@@ -17,7 +17,6 @@ msu_require "console"
 function online() {
   local hosts
   local host
-  local stats
 
   hosts="$@"
   if [ ! "${1}" ]
@@ -25,7 +24,7 @@ function online() {
     hosts="${SUBMARINE_PING_URL:-duckduckgo.com}"
   fi
 
-  for host in "${hosts}"
+  for host in ${hosts}
   do
     ping -q -c 5 ${host} > /dev/null 2>/dev/null && {
       tick "${host}"
