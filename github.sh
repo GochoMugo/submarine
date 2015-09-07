@@ -39,10 +39,18 @@ function new_token() {
 # ${1} - shorthand e.g. GochoMugo/submarine (https://github.com/GochoMugo/submarine)
 #        or submarine (https://github.com/<your_user>/submarine)
 function clone() {
+  # sometimes we copy paste urls, so try understand such situations
+  if [[ "${1}" =~ .*github\.com.* ]]
+  then
+    git clone "${1}"
+    return $?
+  fi
+
   if [[ "${1}" =~ .*/.* ]]
   then
     git clone https://github.com/${1}.git
   else
     git clone https://github.com/${DEFAULT_USERNAME}/${1}.git
   fi
+  return $?
 }
