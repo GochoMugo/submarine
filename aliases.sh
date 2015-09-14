@@ -11,6 +11,7 @@ alias gh.newtoken="msu run submarine.github.new_token"
 alias net.online="msu run submarine.network.online"
 
 # npm
+alias npm.compare="msu run submarine.npm.compare"
 alias npm.g="msu run submarine.npm.g"
 alias npm.ginstalled="msu run submarine.npm.ginstalled"
 alias npm.gln="msu run submarine.npm.gln"
