@@ -91,3 +91,10 @@ Alias: `npm.ln_grunt`
 Lists the version of the globally-installed node modules.
 
 Alias: `npm.gversion`
+
+
+### `compare([filepath])`
+
+Compares versions of the globally-installed node modules against those defined in a `package.json` pointed by `filepath`. If `filepath` is **not** provided, it defaults to `${PWD}.package.json`.
+
+Alias: `npm.compare`
