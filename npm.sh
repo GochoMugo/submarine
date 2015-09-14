@@ -174,3 +174,22 @@ function gversion() {
     fi
   done
 }
+
+
+# compare global and local versions
+#
+# ${1} - path to package.json
+function compare() {
+  local filepath="${1}"
+  # default to $PWD/package.json if no path was provided
+  [[ -z "${1}" ]] && {
+    filepath="${PWD}/package.json"
+  }
+  # exit, if by now, we do not have a package.json
+  [ -e "${filepath}" ] || {
+    error "file not found"
+    return 1
+  }
+  node "$(dirname ${BASH_SOURCE[0]})/lib/compare.js" "${filepath}"
+  return $?
+}
