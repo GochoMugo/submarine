@@ -15,6 +15,21 @@ NODE_BIN=${NODE_HOME}/.bin
 NODE_TRACK=~/.node_modules
 
 
+# installs modules using npm
+#
+# ${*} arguments passed to `npm install`
+# ${SUBMARINE_NPM_NICE}, ${NICE} can be provided to set process niceness
+function install() {
+  local nice_level=${NICE:-${SUBMARINE_NPM_NICE}}
+  if [ "${nice_level}" ]
+  then
+    nice -n ${nice_level} npm install ${@}
+  else
+    npm install ${@}
+  fi
+}
+
+
 # creates symbolic links for node_modules
 #
 # ${@} - module names
@@ -47,7 +62,7 @@ function g() {
   pushd ~ > /dev/null
   for pkg in "$@"
   do
-    npm install ${pkg}
+    install ${pkg}
   done
   for pkg in "$@"
   do
@@ -98,7 +113,7 @@ function grestore() {
   pushd ~ > /dev/null
   for pkg in ${pkgs}
   do
-    [ -d "${NODE_HOME}/${pkg}" ] || npm install ${pkg}
+    [ -d "${NODE_HOME}/${pkg}" ] || install ${pkg}
   done
   popd > /dev/null
   success "restored successfully"
@@ -129,7 +144,7 @@ function gupdate() {
   [[ -z ${pkgs} ]] && pkgs="$(ls node_modules | tr '\n' ' ')"
   for pkg in ${pkgs}
   do
-    npm install ${pkg}
+    install ${pkg}
   done
   popd > /dev/null
 }
