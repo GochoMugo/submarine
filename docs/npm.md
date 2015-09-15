@@ -23,6 +23,17 @@ Read this [blog post](https://gochomugo.github.io/musings/global-node-modules/) 
   ```
 
 
+### `${SUBMARINE_NPM_NICE}`, `${NICE}`
+
+To use `nice` while executing `npm install`, set an integer value to `${NICE}` or `${SUBMARINE_NPM_NICE}`. This allows installing modules in a nicer way.
+
+For example,
+
+```bash
+$ NICE=19 npm.g express
+```
+
+
 ### `g(module_name [, module_name [, ...]])`
 
 Installs the node modules globally.
