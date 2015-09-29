@@ -18,6 +18,7 @@ function check() {
   utils["gibo"]="https://github.com/simonwhitaker/gibo"
   utils["git"]="https://git-scm.com/"
   utils["go"]="http://golang.org/doc/install"
+  utils["gpg"]="https://gnupg.org/"
   utils["go-search"]="https://github.com/tj/go-search"
   utils["gvm"]="https://github.com/moovweb/gvm"
   utils["hg"]="https://mercurial.selenic.com/"
