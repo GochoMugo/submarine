@@ -43,7 +43,7 @@ function get() {
 
 
 # store assets
-function store() {
+function put() {
   for asset in "${@}"
   do
     cp -r "${asset}" "${ASSETS_LIB}"
