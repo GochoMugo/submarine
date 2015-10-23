@@ -3,6 +3,11 @@
 #
 
 
+# aliases
+alias assets.where="msu run submarine.assets.where"
+alias assets.get="msu run submarine.assets.get"
+alias assets.put="msu run submarine.assets.put"
+
 # github
 alias gh.clone="msu run submarine.github.clone"
 alias gh.newtoken="msu run submarine.github.new_token"
