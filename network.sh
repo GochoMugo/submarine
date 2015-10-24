@@ -7,6 +7,10 @@
 msu_require "console"
 
 
+# module variables
+DEPS="curl"
+
+
 # pinging to see if we are connected to the internet
 # and that a website is up
 #
@@ -32,4 +36,10 @@ function online() {
       cross "${host}"
     }
   done
+}
+
+
+# return my public IP address
+function my_ip() {
+  echo $(curl -s https://api.ipify.org)
 }
