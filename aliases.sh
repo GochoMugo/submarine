@@ -4,9 +4,10 @@
 
 
 # aliases
-alias assets.where="msu run submarine.assets.where"
 alias assets.get="msu run submarine.assets.get"
+alias assets.list="msu run submarine.assets.list"
 alias assets.put="msu run submarine.assets.put"
+alias assets.where="msu run submarine.assets.where"
 
 # github
 alias gh.clone="msu run submarine.github.clone"
