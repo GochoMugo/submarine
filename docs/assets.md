@@ -47,7 +47,7 @@ Retrieve assets.
 Alias: `assets.get`
 
 
-### store([asset1 [, asset2 [, ...]]])
+### put([asset1 [, asset2 [, ...]]])
 
 Store assets.
 
