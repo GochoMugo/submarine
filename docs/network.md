@@ -30,3 +30,11 @@ How?
 Checks if the hosts are online. If no host is provided as arguments, it uses `${SUBMARINE_PING_URL}`. If that is **not** set, it defaults to `duckduckgo.com`.
 
 Alias: `net.online`
+
+
+### my_ip()
+
+Returns my public IP address, using the [ipify](https://www.ipify.org/) API.
+
+Alias: `net.my_ip`
+
