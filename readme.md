@@ -23,6 +23,7 @@ Ensure you have installed [msu](https://github.com/GochoMugo/msu):
 
 Read the [`docs`](https://github.com/GochoMugo/submarine/tree/master/docs/) on available commands:
 
+* [assets](https://github.com/GochoMugo/submarine/tree/master/docs/assets.md)
 * [badges](https://github.com/GochoMugo/submarine/tree/master/docs/badges.md)
 * [github](https://github.com/GochoMugo/submarine/tree/master/docs/github.md)
 * [network](https://github.com/GochoMugo/submarine/tree/master/docs/network.md)
