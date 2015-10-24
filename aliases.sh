@@ -13,6 +13,7 @@ alias gh.clone="msu run submarine.github.clone"
 alias gh.newtoken="msu run submarine.github.new_token"
 
 # network
+alias net.my_ip="msu run submarine.network.my_ip"
 alias net.online="msu run submarine.network.online"
 
 # npm
