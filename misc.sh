@@ -32,3 +32,8 @@ function extract() {
   fi
 }
 
+
+# Create a ZIP archive of a file or folder.
+function makezip() {
+  zip -r "${1}.zip" "${1}"
+}
