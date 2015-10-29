@@ -21,3 +21,14 @@ Some utilities I find useful.
 ### check()
 
 Checks to see if useful development utilities have been installed.
+
+
+### extract(filename)
+
+Extract different types of archives e.g. zip, tar, tgz, etc.
+
+
+### makezip(filename)
+
+Create a zip from a file or directory
+
