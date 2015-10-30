@@ -34,3 +34,7 @@ alias npm.ln_grunt="msu run submarine.npm.ln_grunt"
 alias p.running="msu run submarine.process.running"
 alias p.restart="msu run submarine.process.restart"
 alias p.retry="msu run submarine.process.retry"
+
+# utils
+alias utils.extract="msu run submarine.utils.extract"
+alias utils.makezip="msu run submarine.utils.makezip"

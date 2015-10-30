@@ -27,8 +27,12 @@ Checks to see if useful development utilities have been installed.
 
 Extract different types of archives e.g. zip, tar, tgz, etc.
 
+Alias: `utils.extract`
+
 
 ### makezip(filename)
 
 Create a zip from a file or directory
+
+Alias: `utils.makezip`
 
