@@ -23,7 +23,7 @@ Some utilities I find useful.
 Checks to see if useful development utilities have been installed.
 
 
-### extract(filename)
+### extract([file1 [, file2 [, ...]]])
 
 Extract different types of archives e.g. zip, tar, tgz, etc.
 
