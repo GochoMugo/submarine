@@ -6,6 +6,7 @@
 # aliases
 alias assets.get="msu run submarine.assets.get"
 alias assets.list="msu run submarine.assets.list"
+alias assets.ln="msu run submarine.assets.link"
 alias assets.put="msu run submarine.assets.put"
 alias assets.where="msu run submarine.assets.where"
 

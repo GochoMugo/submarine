@@ -42,6 +42,21 @@ function get() {
 }
 
 
+# create symbolic links to assets
+function link() {
+  for asset in "${@}"
+  do
+    # for convenience, catch typos, etc.
+    if [ ! -f "${ASSETS_LIB}/${asset}" ]
+    then
+      error "'${asset}' does not exist"
+      continue
+    fi
+    ln -sf "${ASSETS_LIB}/${asset}" "${asset}"
+  done
+}
+
+
 # store assets
 function put() {
   for asset in "${@}"

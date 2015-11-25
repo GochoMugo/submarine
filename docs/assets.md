@@ -40,6 +40,13 @@ List the assets.
 Alias: `assets.list`
 
 
+### link([asset1 [, asset2 [, ...]]])
+
+Create symlinks to the assets, in the current working directory.
+
+Alias: `assets.ln`
+
+
 ### get([asset1 [, asset2 [, ...]]])
 
 Retrieve assets.
