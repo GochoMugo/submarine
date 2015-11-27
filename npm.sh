@@ -34,9 +34,19 @@ function install() {
 #
 # ${@} - module names
 function ln_mod() {
-  [ ${PWD} == ${HOME} ] && return # dont link if in $HOME
-  mkdir -p node_modules/ # ensure node_modules/ exists
-  mkdir -p node_modules/.bin/ # and bin
+  # ensure we do NOT mess up with ${NODE_HOME}
+  # TODO: ignore a leading slash (/) in the ${NODE_HOME} variable
+  # TODO: resolve ${NODE_HOME} if it is a symlink
+  if [ "${PWD}/node_modules" == "${NODE_HOME}" ]
+  then
+    error "can not link modules in cwd"
+    error "the modules are already in the ./node_modules/ directory"
+    return 1
+  fi
+
+  # ensure ./node_modules/ and ./node_modules/.bin exist
+  mkdir -p node_modules/.bin/
+
   for pkg in "$@"
   do
     [ -d ${NODE_HOME}/${pkg} ] && {
@@ -48,7 +58,7 @@ function ln_mod() {
     }
     [ -x ${NODE_BIN}/${pkg} ] && {
       rm -rf node_modules/.bin/$pkg
-      ln -fs ${NODE_BIN}/$pkg node_modules/.bin/$pkg
+      ln -sf ${NODE_BIN}/$pkg node_modules/.bin/$pkg
       tick "${pkg}: linked executable"
     }
   done
@@ -59,26 +69,43 @@ function ln_mod() {
 #
 # ${@} - module names
 function g() {
-  pushd ~ > /dev/null
+  # move to the directory holding ${NODE_HOME}
+  pushd "$(dirname ${NODE_HOME})" > /dev/null
+
+  local installed=""
+  local failed=""
+
+  # do the installing
   for pkg in "$@"
   do
     install ${pkg}
+    if [ $? ]
+    then
+      installed="${installed} ${pkg}"
+    else
+      failed="${failed} ${pkg}"
+    fi
   done
-  for pkg in "$@"
+
+  # after-success
+  for pkg in "${installed}"
   do
     pkg=$(echo ${pkg} | grep -Eo "^[^@]*")
-    [ -d ${NODE_HOME}/${pkg} ] && {
-      tick "${pkg}: installed"
-      gtrack ${pkg}
-    } || {
-      cross "${pkg}: could not be installed"
-    }
+    tick "${pkg}: installed"
+    gtrack ${pkg}
   done
+
+  # report back failed installs
+  for pkg in "${failed}"
+  do
+    cross "${pkg}: could not be installed"
+  done
+
   popd > /dev/null
 }
 
 
-# install node module globally* and link too
+# install node module globally and link too
 #
 # ${@} - module names
 function gln() {
@@ -92,10 +119,19 @@ function gln() {
 # ${@} - module names
 function gtrack() {
   local pkgs="$@"
-  [[ -z ${pkgs} ]] && pkgs="$(ls ${NODE_HOME} | tr '\n' ' ')"
+
+  # we might want to track our installed modules
+  if [[ -z ${pkgs} ]]
+  then
+    pkgs="$(ls ${NODE_HOME} | tr '\n' ' ')"
+  fi
+
+  # create the tracking file
   touch ${NODE_TRACK}
+
   for pkg in ${pkgs}
   do
+    # ensure we do not add pkg name to the file, more than once
     cat ${NODE_TRACK} | grep -e "^$pkg$" > /dev/null
     [ $? -ne 0 ] && {
       append ${NODE_TRACK} "${pkg}"
