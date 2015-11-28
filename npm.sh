@@ -88,7 +88,7 @@ function g() {
   done
 
   # after-success
-  for pkg in "${installed}"
+  for pkg in ${installed}
   do
     pkg=$(echo ${pkg} | grep -Eo "^[^@]*")
     tick "${pkg}: installed"
@@ -96,7 +96,7 @@ function g() {
   done
 
   # report back failed installs
-  for pkg in "${failed}"
+  for pkg in ${failed}
   do
     cross "${pkg}: could not be installed"
   done
