@@ -41,4 +41,5 @@ alias sys.down="msu run submarine.system.down"
 
 # utils
 alias utils.extract="msu run submarine.utils.extract"
+alias utils.makepdf="msu run submarine.utils.makepdf"
 alias utils.makezip="msu run submarine.utils.makezip"

@@ -36,3 +36,10 @@ Create a zip from a file or directory
 
 Alias: `utils.makezip`
 
+
+### makepdf(filename)
+
+Create a PDF file, with the file `filename` as input to `pdflatex` command.
+
+Alias: `utils.makepdf`
+

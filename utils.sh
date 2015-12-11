@@ -86,3 +86,12 @@ function extract() {
 function makezip() {
   zip -r "${1}.zip" "${1}"
 }
+
+
+# Create a PDF using the file, using `pdflatex`
+function makepdf() {
+  pdflatex ${1}
+  local store="/tmp/$(echo "${PWD}/${1}" | sed 's/\//./g')"
+  mkdir -p "${store}"
+  mv *.log *.aux "${store}"
+}
