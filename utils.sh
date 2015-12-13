@@ -84,7 +84,7 @@ function extract() {
 
 # Create a ZIP archive of a file or directory.
 function makezip() {
-  zip -r "${1}.zip" "${1}"
+  zip -r "$(echo "${1}" | sed 's/\/$//g').zip" "${1}"
 }
 
 
