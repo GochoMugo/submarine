@@ -78,6 +78,9 @@ function retry() {
     cmds="${@:2}"
   fi
 
+  # TODO: currently, we can not terminate the running application using
+  # C-c (Keyboard interrupt). Make it detect this interrupt and stop
+  # immediately
   until [ ${exit_code} -eq 0 ] || [ ${counter} -gt ${max_attempts} ]
   do
     log " *** Attempt #${counter} ***"
