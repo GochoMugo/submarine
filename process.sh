@@ -16,8 +16,16 @@ DEPS=
 #
 # ${@} processes
 function running() {
-  local process
   local -i num
+
+  # if no argument was given, just show the number of processes running
+  if [ ! "${1}" ]
+  then
+    num="$(ps -ef | wc -l)"
+    echo -e "${clr_white}${num}${clr_reset} processes running"
+  fi
+
+  local process
   for process in "$@"
   do
     num=$(ps -ef | grep -E "\:[0-9]+\ ([^\ ]*\/)?${process}(\ .*)?\$" | wc -l)
