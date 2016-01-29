@@ -6,6 +6,9 @@
 #
 
 
+# module variables
+TMP_COPY_IN_2="/tmp/copy_in_2"
+
 
 # modules
 msu_require "console"
@@ -94,4 +97,21 @@ function makepdf() {
   local store="/tmp/$(echo "${PWD}/${1}" | sed 's/\//./g')"
   mkdir -p "${store}"
   mv *.log *.aux "${store}"
+}
+
+
+# copying files around without having to type long destination paths
+function copy_push() {
+  mkdir -p "${TMP_COPY_IN_2}"
+  for file in "${@}"
+  do
+    cp "${file}" "${TMP_COPY_IN_2}"
+  done
+}
+function copy_pop() {
+  local dest="${1:-${PWD}}"
+  for file in $(ls "${TMP_COPY_IN_2}")
+  do
+    mv "${TMP_COPY_IN_2}/${file}" "${dest}"
+  done
 }
