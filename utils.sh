@@ -71,7 +71,7 @@ function extract() {
               *.bz2)       bunzip2 "${file}"      ;;
               *.rar)       unrar x "${file}"      ;;
               *.gz)        gunzip "${file}"       ;;
-              *.tar )       tar xvf "${file}"     ;;
+              *.tar )      tar xvf "${file}"      ;;
               *.tbz2)      tar xvjf "${file}"     ;;
               *.tgz)       tar xvzf "${file}"     ;;
               *.zip)       unzip "${file}"        ;;
