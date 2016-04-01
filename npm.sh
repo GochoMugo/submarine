@@ -5,7 +5,7 @@
 
 # modules
 msu_require "console"
-msu_require "fs"
+msu_require "submarine.fs"
 
 
 # mod vars
