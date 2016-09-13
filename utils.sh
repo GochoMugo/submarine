@@ -116,3 +116,14 @@ function copy_pop() {
     mv "${TMP_COPY_IN_2}/${file}" "${dest}"
   done
 }
+
+
+function bin() {
+  local bin_dir="$(readlink -f "${1}")"
+  for file in "${@:2}"
+  do
+    local src="$(readlink -f "${file}")"
+    local dest="${bin_dir}/$(basename "${src}")"
+    ln -sf "${src}" "${dest}"
+  done
+}
